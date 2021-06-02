@@ -1,4 +1,5 @@
 import React, { CSSProperties } from "react";
+import styled from "styled-components";
 import { Todo } from '../../modules/todos';
 
 interface ITodoItem {
@@ -8,14 +9,6 @@ interface ITodoItem {
 };
 
 const TodoItem: React.FC<ITodoItem>= (props) => {
-    const textStyle: CSSProperties = {
-        textDecoration: props.todo.done ? 'line-through' : 'none'
-    };
-
-    const removeStyle: CSSProperties = {
-        marginLeft: '8px',
-        color: 'red',
-    };
 
     const handleToggle = () => {
         props.onToggle(props.todo.id);
@@ -26,16 +19,34 @@ const TodoItem: React.FC<ITodoItem>= (props) => {
     };
 
     return (
-        <li>
-            <span onClick={handleToggle} style={textStyle} > 
+        <>
+            <Text
+                onClick={handleToggle}
+                isDone={props.todo.done}
+            > 
                 {props.todo.text}
-            </span>
-            <span onClick={handleRemove} style={removeStyle} >
-                (X)
-            </span>
-        </li>
+                <DeleteButton onClick={handleRemove}>
+                X
+                </DeleteButton>
+            </Text>
+        </>
     );
 };
 
 export default TodoItem;
 
+const Text = styled.div<{ isDone: boolean }>`
+    position: relative;
+    width: 325px;
+    height: 30px;
+    padding-left: 15px;
+    text-decoration: ${({ isDone }) => isDone ? 'line-through' : 'none'};
+    cursor: pointer;
+`;
+
+const DeleteButton = styled.button`
+    all: unset;
+    position: absolute;
+    right: 0px;
+    color: red;
+`;

@@ -1,4 +1,5 @@
 import React, { FormEvent, useState } from 'react';
+import styled from 'styled-components';
 
 interface ITodoCreator {
     onCreate: (text: string) => void;
@@ -19,14 +20,23 @@ const TodoCreator: React.FC<ITodoCreator>= (props) => {
 
     return (
         <form onSubmit={onSubmit}>
-            <input
+            <Input
                 placeholder='todo..'
                 value={value}
                 onChange={onChange}
             />
-            <button type='submit'>enter</button>
         </form>
     );
 };
 
 export default TodoCreator;
+
+const Input = styled.input`
+    all: unset;
+    width: 300px;
+    height: 40px;
+    padding-left: 15px;
+    margin-bottom: 20px;
+    background-color: #30A9DE;
+    border-radius: 5px;
+`;

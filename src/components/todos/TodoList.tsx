@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Todo } from '../../modules/todos';
 import TodoItem from './TodoItem';
 
@@ -9,9 +10,8 @@ interface ITodoList {
 };
 
 const TodoList = (props: ITodoList) => {
-    if (props.todos.length === 0) return <span>등록된 할일이 없어요</span>
     return (
-        <ul>
+        <Layout>
             {props.todos.map(todo => (
                 <TodoItem
                     todo={todo}
@@ -20,8 +20,12 @@ const TodoList = (props: ITodoList) => {
                     key={todo.id}
                 />
             ))}
-        </ul>
+        </Layout>
     );
 };
 
 export default TodoList;
+
+const Layout = styled.div`
+    width: 340px;
+`;
