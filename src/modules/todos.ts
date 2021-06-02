@@ -61,8 +61,7 @@ const todos = (
                 todo.id === action.payload ? {...todo, done: !todo.done} : todo
             );
         case REMOVE_TODO :
-            const selectedIndex = state.findIndex(todo => todo.id === action.payload);
-            return [...state.slice(0, selectedIndex), ...state.slice(selectedIndex + 1)];
+            return [...state.slice(0, action.payload), ...state.slice(action.payload + 1)];
         default :
             return state;
     };
