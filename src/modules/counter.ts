@@ -10,12 +10,12 @@ export const double = () => ({ type: DOUBLE });
 
 // ACTION TYPE
 type CounterAction =
-| ReturnType<typeof increase>
-| ReturnType<typeof decrease>
-| ReturnType<typeof double>
+    | ReturnType<typeof increase>
+    | ReturnType<typeof decrease>
+    | ReturnType<typeof double>
 
 // STATE TYPE
-type CounterState = {
+interface CounterState {
     count: number;
 };
 

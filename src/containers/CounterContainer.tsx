@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../modules';
 import { increase, decrease, double } from '../modules/counter';
-import Counter from '../components/counter';
+import Counter from '../components/counter/Counter';
 
 const CounterContainer: React.FC = () => {
     const count = useSelector((state: RootState) => state.counter.count);
